@@ -1,0 +1,7 @@
+//for create post model and migration//
+php artisan make:model Post 
+php artisan make:migration create_posts_table
+
+
+//create category table migration,model,controller
+php artisan make:model Category -mrc
