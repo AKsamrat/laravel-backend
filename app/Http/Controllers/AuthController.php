@@ -41,7 +41,7 @@ class AuthController extends Controller
         $user->save();
 
         Auth::login($user);
-        // flash()->success('Regostration successfully!');
+        flash()->success('Registration successfully!');
         return redirect('/');
     }
 
@@ -62,7 +62,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($request->only('email', 'password'), $request->boolean('remember'))) {
             $request->session()->regenerate();
-            // flash()->success('Login successfully!');
+            flash()->success('Login successfully!');
             return redirect()->intended('/');
         };
 
@@ -76,6 +76,7 @@ class AuthController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+        flash()->success('Logout successfully!');
         return redirect('/');
     }
 }
